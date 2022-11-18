@@ -21,7 +21,13 @@ def pregunta_01():
     214
 
     """
-    return
+    
+    Lista=[1, 2, 5, 3, 6, 7, 9, 1, 2, 3, 7, 5, 3, 8, 9, 8, 3, 5, 8, 9, 7, 3, 5, 9, 4, 6, 8, 5, 6, 0, 9, 3, 5, 4, 6, 7, 8, 9, 1, 5]
+    contador=0
+    for i in Lista:
+        contador += i
+
+    return contador 
 
 
 def pregunta_02():
@@ -39,7 +45,20 @@ def pregunta_02():
     ]
 
     """
-    return
+    lista=["E", "A",	"B",	"A",	"C",	"A",	"A",	"B",	"E",	"B",	"C",	"C",	"D",	"E",	"B",	"D",	"E",	"D",	"E",	"E",	"E",	"E",	"D",	"A",	"E",	"E",	"A",	"E",	"A",	"C",	"A",	"D",	"E",	"B", "B",	"D",	"B",	"C",	"E",  "E"]
+    lista2=[]
+    for i in lista:
+        if i not in lista2:
+        lista2.append(i)
+    lista3=[]
+    for i in lista2:
+        a=lista.count(i)
+        lista3.append((i,a))
+
+    for i in lista3:
+        print(i)
+        
+    return lista3
 
 
 def pregunta_03():
