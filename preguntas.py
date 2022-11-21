@@ -16,11 +16,11 @@ def pregunta_01():
 
     """
     with open('data.csv', "r") as data:
-        informacion = data.readlines()    
-        informacion2 = [line.replace("\n", "") for line in informacion]
-        total = [line.split() for line in informacion2]
+        dataInfo = data.readlines()
+        clear_data = [line.replace("\n", "") for line in dataInfo]
+        fullData = [line.split() for line in clear_data]
         suma = 0
-        for i in total:
+        for i in fullData:
             suma+= int(i[1])
         
         return suma
@@ -43,16 +43,15 @@ def pregunta_02():
 
     """
     with open('data.csv', "r") as data:
-        informacion = data.readlines()    
-        informacion2 = [line.replace("\n", "") for line in informacion]
-        total = [line.split() for line in informacion2]
+        dataInfo = data.readlines()
+        clear_data = [line.replace("\n", "") for line in dataInfo]
+        fullData = [line.split() for line in clear_data]
     
-    lista1={}
-    for fila en total:
-        lista1[fila[0]] = lista1.get(fila[0],0) + 1
+        rep = {}
+        for row in fullData:
+            rep[row[0]] = rep.get(row[0],0) + 1
         
-    
-    return list(sorted(lista1.items()))
+        return list(sorted(rep.items()))
 
 
 def pregunta_03():
@@ -70,26 +69,16 @@ def pregunta_03():
     ]
 
     """
-    lista4=[]
-    for i in x[1:]:
-        lista4.append(i[0])
-
-    lista5=[]
-    for i in lista4:
-        if i not in lista5:
-            lista5.append(i)
-
-
-    lista6=[]
-    for i in lista5:
-      suma1=0
-      for y in x[1:]:
-        if i==y[0]:
-        suma1 += int(y[1])
-      lista6.append((i, suma1))
-
-   
-    return lista6
+    with open('data.csv', "r") as data:
+        dataInfo = data.readlines()
+        clear_data = [line.replace("\n", "") for line in dataInfo]
+        fullData = [line.split() for line in clear_data]
+    
+        rep = {}
+        for row in fullData:
+            rep[row[0]] = rep.get(row[0],0) + int(row[1])
+        
+        return list(sorted(rep.items()))
 
 
 def pregunta_04():
@@ -114,7 +103,18 @@ def pregunta_04():
     ]
 
     """
-    return
+
+    with open('data.csv', "r") as data:
+        dataInfo = data.readlines()
+        clear_data = [line.replace("\n", "") for line in dataInfo]
+        fullData = [line.split() for line in clear_data]
+    
+        rep = {}
+        for row in fullData:
+            rep[row[2][5:7]] = rep.get(row[2][5:7],0) + 1
+        
+        return list(sorted(rep.items()))
+   
 
 
 def pregunta_05():
@@ -132,7 +132,24 @@ def pregunta_05():
     ]
 
     """
-    return
+    with open('data.csv', "r") as data:
+        dataInfo = data.readlines()
+        clear_data = [line.replace("\n", "") for line in dataInfo]
+        fullData = [line.split() for line in clear_data]
+    
+        minmax = {}
+        for row in fullData:
+            current = minmax.get(row[0],-1)
+            if(current == -1):
+                minmax[row[0]] = (row[1],row[1])
+            if(current!=-1):
+                minmax[row[0]] = (max(current[0],row[1]),min(current[1],row[1]))
+        sort = list(sorted(minmax.items()))
+        final = []
+        for i in sort:
+            final.append((i[0],int(i[1][0]),int(i[1][1])))
+        return final
+    
 
 
 def pregunta_06():
@@ -157,7 +174,27 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open('data.csv', "r") as data:
+        dataInfo = data.readlines()
+        clear_data = [line.replace("\n", "") for line in dataInfo]
+        fullData = [line.split() for line in clear_data]
+    
+        keys={}
+        for row in fullData:
+            for i in row[4].split(","):
+                currentKeyValue = keys.get(str(i[:3]),-1)
+                currentValue = int(i[4:])
+                if(currentKeyValue == -1):
+                    keys[str(i[:3])] = (currentValue,currentValue)
+                if(currentKeyValue !=-1):
+                    keys[str(i[:3])] = (min(currentKeyValue[0],currentValue),max(currentKeyValue[1],currentValue))
+
+        sort = list(sorted(keys.items()))
+        final = []
+        for i in sort:
+            final.append((i[0],i[1][0],i[1][1]))
+        return final
+   
 
 
 def pregunta_07():
@@ -181,7 +218,23 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open('data.csv', "r") as data:
+        dataInfo = data.readlines()
+        clear_data = [line.replace("\n", "") for line in dataInfo]
+        fullData = [line.split() for line in clear_data]
+    
+        rep = {}
+        for row in fullData:
+            index = int(row[1])
+            current = rep.get(index,-1)
+            if(current == -1):
+                rep[index] = [row[0]]
+            else:
+                rep[index].append(row[0])
+            #print(current,type(current))
+        return list(sorted(rep.items()))
+
+   
 
 
 def pregunta_08():
