@@ -16,14 +16,14 @@ def pregunta_01():
 
     """
     with open('data.csv', "r") as data:
-        dataInfo = data.readlines()
-        clear_data = [line.replace("\n", "") for line in dataInfo]
-        fullData = [line.split() for line in clear_data]
-        suma = 0
-        for i in fullData:
-            suma+= int(i[1])
+     dataInfo = data.readlines()
+     clear_data = [line.replace("\n", "") for line in dataInfo]
+     fullData = [line.split() for line in clear_data]
+     suma = 0
+     for i in fullData:
+      suma+= int(i[1])
         
-        return suma
+     return suma
     
    
 
