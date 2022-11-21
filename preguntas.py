@@ -81,9 +81,26 @@ def pregunta_03():
     ]
 
     """
-    
-    
-    return
+    lista4=[]
+    for i in x[1:]:
+        lista4.append(i[0])
+
+    lista5=[]
+    for i in lista4:
+        if i not in lista5:
+            lista5.append(i)
+
+
+    lista6=[]
+    for i in lista5:
+      suma1=0
+      for y in x[1:]:
+        if i==y[0]:
+        suma1 += int(y[1])
+      lista6.append((i, suma1))
+
+   
+    return lista6
 
 
 def pregunta_04():
