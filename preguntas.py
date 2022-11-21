@@ -312,7 +312,6 @@ def pregunta_09():
         return dict(sorted(keys.items())
     
 
-
 def pregunta_10():
     """
     Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
@@ -330,8 +329,7 @@ def pregunta_10():
     ]
 
 
-    """
-                    
+    """         
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
         clear_data = [line.replace("\n", "") for line in dataInfo]
@@ -361,7 +359,6 @@ def pregunta_11():
 
 
     """
-                    
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
         clear_data = [line.replace("\n", "") for line in dataInfo]
