@@ -19,6 +19,11 @@ x = [z.split(",") for z in x]
 
 
 def pregunta_01():
+    suma=0 
+    for i in x[1:]:
+        suma += int(i[1])
+    return suma
+    
     """
     Retorne la suma de la segunda columna.
 
@@ -26,12 +31,7 @@ def pregunta_01():
     214
 
     """
-   suma=0 
-   for i in x[1:]:
-        suma += int(i[1])
-
-   return suma 
-
+   
 
 def pregunta_02():
     """
@@ -48,8 +48,22 @@ def pregunta_02():
     ]
 
     """
+    lista=[]
+    for i in x[1:]:
+        lista.append(i[0])
+
+    lista2=[]
+    for i in lista:
+        if i not in lista2:
+            lista2.append(i)
+    lista3=[]
+    for i in lista2:
+        y=lista.count(i)
+        lista3.append((i,y))
     
-    return 
+    
+    
+    return lista3
 
 
 def pregunta_03():
@@ -67,6 +81,8 @@ def pregunta_03():
     ]
 
     """
+    
+    
     return
 
 
