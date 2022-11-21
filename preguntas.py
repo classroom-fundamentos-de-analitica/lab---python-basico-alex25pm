@@ -7,7 +7,13 @@ básicas.
 Utilice el archivo `data.csv` para resolver las preguntas.
 """
 
+
 def pregunta_01():
+    """
+    Retorne la suma de la segunda columna.
+    Rta/
+    214
+    """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
         clear_data = [line.replace("\n", "") for line in dataInfo]
@@ -15,22 +21,14 @@ def pregunta_01():
         suma = 0
         for i in fullData:
             suma+= int(i[1])
+        
         return suma
-            
-    """
-    Retorne la suma de la segunda columna.
 
-    Rta/
-    214
-
-    """
-          
 
 def pregunta_02():
     """
     Retorne la cantidad de registros por cada letra de la primera columna como la lista
     de tuplas (letra, cantidad), ordendas alfabéticamente.
-
     Rta/
     [
         ("A", 8),
@@ -39,7 +37,6 @@ def pregunta_02():
         ("D", 6),
         ("E", 14),
     ]
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -57,7 +54,6 @@ def pregunta_03():
     """
     Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
     de tuplas (letra, suma) ordendas alfabeticamente.
-
     Rta/
     [
         ("A", 53),
@@ -66,7 +62,6 @@ def pregunta_03():
         ("D", 31),
         ("E", 67),
     ]
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -84,7 +79,6 @@ def pregunta_04():
     """
     La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
     registros por cada mes, tal como se muestra a continuación.
-
     Rta/
     [
         ("01", 3),
@@ -100,9 +94,7 @@ def pregunta_04():
         ("11", 2),
         ("12", 3),
     ]
-
     """
-
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
         clear_data = [line.replace("\n", "") for line in dataInfo]
@@ -113,14 +105,12 @@ def pregunta_04():
             rep[row[2][5:7]] = rep.get(row[2][5:7],0) + 1
         
         return list(sorted(rep.items()))
-   
 
 
 def pregunta_05():
     """
     Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
     letra de la columa 1.
-
     Rta/
     [
         ("A", 9, 2),
@@ -129,7 +119,6 @@ def pregunta_05():
         ("D", 8, 3),
         ("E", 9, 1),
     ]
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -148,7 +137,6 @@ def pregunta_05():
         for i in sort:
             final.append((i[0],int(i[1][0]),int(i[1][1])))
         return final
-    
 
 
 def pregunta_06():
@@ -157,7 +145,6 @@ def pregunta_06():
     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
     clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
     grande computados sobre todo el archivo.
-
     Rta/
     [
         ("aaa", 1, 9),
@@ -171,7 +158,6 @@ def pregunta_06():
         ("iii", 0, 9),
         ("jjj", 5, 17),
     ]
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -193,7 +179,6 @@ def pregunta_06():
         for i in sort:
             final.append((i[0],i[1][0],i[1][1]))
         return final
-   
 
 
 def pregunta_07():
@@ -201,7 +186,6 @@ def pregunta_07():
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
     valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
     a dicho valor de la columna 2.
-
     Rta/
     [
         (0, ["C"]),
@@ -215,7 +199,6 @@ def pregunta_07():
         (8, ["E", "D", "E", "A", "B"]),
         (9, ["A", "B", "E", "A", "A", "C"]),
     ]
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -233,8 +216,6 @@ def pregunta_07():
             #print(current,type(current))
         return list(sorted(rep.items()))
 
-   
-
 
 def pregunta_08():
     """
@@ -242,7 +223,6 @@ def pregunta_08():
     de la segunda columna; la segunda parte de la tupla es una lista con las letras
     (ordenadas y sin repetir letra) de la primera  columna que aparecen asociadas a dicho
     valor de la segunda columna.
-
     Rta/
     [
         (0, ["C"]),
@@ -256,7 +236,6 @@ def pregunta_08():
         (8, ["A", "B", "D", "E"]),
         (9, ["A", "B", "C", "E"]),
     ]
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -276,14 +255,12 @@ def pregunta_08():
         for i in sort:
             final.append((int(i[0]),list(sorted(set(i[1])))))
         return final
-    
 
 
 def pregunta_09():
     """
     Retorne un diccionario que contenga la cantidad de registros en que aparece cada
     clave de la columna 5.
-
     Rta/
     {
         "aaa": 13,
@@ -297,7 +274,6 @@ def pregunta_09():
         "iii": 18,
         "jjj": 18,
     }
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -309,14 +285,13 @@ def pregunta_09():
         for row in fullData:
             for i in row[4].split(","):
                 keys[str(i[:3])] = keys.get(str(i[:3]),0) + 1
-        return dict(sorted(keys.items())
-    
+        return dict(sorted(keys.items()))
+
 
 def pregunta_10():
     """
     Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
     cantidad de elementos de las columnas 4 y 5.
-
     Rta/
     [
         ("E", 3, 5),
@@ -327,9 +302,7 @@ def pregunta_10():
         ("E", 2, 3),
         ("E", 3, 3),
     ]
-
-
-    """         
+    """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
         clear_data = [line.replace("\n", "") for line in dataInfo]
@@ -338,14 +311,13 @@ def pregunta_10():
         elements = []
         for row in fullData:
             elements.append((row[0],len(row[3].split(",")),len(row[4].split(","))))
-        return elements      
+        return elements
 
 
 def pregunta_11():
     """
     Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
     columna 4, ordenadas alfabeticamente.
-
     Rta/
     {
         "a": 122,
@@ -356,8 +328,6 @@ def pregunta_11():
         "f": 134,
         "g": 35,
     }
-
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -368,15 +338,13 @@ def pregunta_11():
         for row in fullData:
             for i in row[3].split(","):
                 keys[str(i)] = keys.get(str(i),0) + int(row[1])
-        return dict(sorted(keys.items()))                
-   
+        return dict(sorted(keys.items()))
 
 
 def pregunta_12():
     """
     Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
     los valores de la columna 5 sobre todo el archivo.
-
     Rta/
     {
         'A': 177,
@@ -385,7 +353,6 @@ def pregunta_12():
         'D': 136,
         'E': 324
     }
-
     """
     with open('data.csv', "r") as data:
         dataInfo = data.readlines()
@@ -396,4 +363,4 @@ def pregunta_12():
         for row in fullData:
             for i in row[4].split(","):
                 keys[row[0]] = keys.get(row[0],0) + int(i[4:])
-        return dict(sorted(keys.items()))    
+        return dict(sorted(keys.items()))   
