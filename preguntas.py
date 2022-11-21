@@ -13,14 +13,9 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 import csv
 
-with open('data.csv','r', encoding='UTF-8') as data:
-    entrada= csv.reader(data,delimiter=" ")
-    lista=list(entrada)
-    
-listadef=[]
-for linea in lista:
-    x=linea[0].split('\t')
-    listadef.append(x)
+x = open("data.csv", "r").readlines()
+x = [z.split(",") for z in x]
+
 
 
 def pregunta_01():
@@ -32,10 +27,10 @@ def pregunta_01():
 
     """
    suma=0 
-for i in listadef:
-    suma += int(i[1])
+   for i in x[1:]:
+        suma += int(i[1])
 
-    return suma 
+   return suma 
 
 
 def pregunta_02():
